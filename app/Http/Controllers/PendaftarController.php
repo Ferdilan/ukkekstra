@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\pendaftar;
 use App\Models\daftarekstra;
+use App\Exports\PendaftarExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class PendaftarController extends Controller
 {
@@ -16,13 +19,14 @@ class PendaftarController extends Controller
      */
     public function index()
     {
-        return view('pendaftar.index',[
-            'title' => "Pendaftaran Ekstra",
-            'titlepembina' => "Pendaftar Ekstra",
-            'pendaftars' => pendaftar::all(),
-            'users' => User::all()
-        ]); 
+    return view('pendaftar.index', [
+        'title' => "Pendaftaran Ekstra",
+        'titlepembina' => "Pendaftar Ekstra",
+        'pendaftars' => pendaftar::all(),
+        'users' => User::all(),
+    ]); 
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -31,11 +35,21 @@ class PendaftarController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->level === 'siswa' && auth()->user()->ekstra_registered){
+            // User siswa sudah terdaftar, kembalikan ke halaman sebelumnya
+            return redirect('/siswa/pendaftaran');
+        }
+    
+        // Tandai user siswa sebagai terdaftar
+        if(auth()->user()->level === 'siswa'){
+            auth()->user()->update(['ekstra_registered' => true]);
+        }
+
         return view('pendaftar.pendaftar', [
             'title' => "Pendaftaran Ekstra",
             'users' => User::all(),
             'daftarekstra' => daftarekstra::all(),
-            'users' => User::all()
+            'users' => User::all(),
         ]);
     }
 
@@ -78,7 +92,7 @@ class PendaftarController extends Controller
     public function store(Request $request)
     {
         $pendaftar = $request->validate([
-            'nama' => 'required',
+            'nama' => 'nullable',
             'kelas' => 'required',
             'nohp' => 'required',
             'alamat' => 'required',
@@ -93,6 +107,7 @@ class PendaftarController extends Controller
         pendaftar::create($pendaftar);
         return redirect('/siswa/pendaftaran');
     }
+
 
     /**
      * Display the specified resource.
@@ -139,6 +154,12 @@ class PendaftarController extends Controller
         pendaftar::find($id)->delete();
         // kembalikan ke halaman catatankerja
         return redirect('/pendaftaran');
+    }
+
+    public function export()
+    {
+        return Excel::download(new PendaftarExport, 'pendaftar.xlsx');
+        return redirect('/pendaftar');
     }
 
 }

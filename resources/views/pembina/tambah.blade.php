@@ -2,7 +2,7 @@
 @section('content')
     <div>
         <a href="/daftarpembina">
-        <i class="fa fa-arrow-left"aria-hidden="true"> Kembali</i>
+        <i class="fa fa-arrow-left mb-3"aria-hidden="true"> Kembali</i>
         </a>
     </div>
 <div class="card">

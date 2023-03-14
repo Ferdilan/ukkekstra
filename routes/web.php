@@ -6,6 +6,7 @@ use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\JurnalEkstraController;
 use App\Http\Controllers\AnggotaEkstraController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,6 @@ use App\Http\Controllers\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
-
 route::get('/registrasi',[LoginController::class,'registrasi'])->name('registrasi');
 route::post('/simpanregistrasi',[LoginController::class,'simpanregistrasi'])->name('simpanregistrasi');
 route::get('/login',[LoginController::class,'halamanlogin'])->name('login');
@@ -33,16 +30,20 @@ route::get('/tambahpembina',[LoginController::class,'tambahpembina'])->name('tam
 route::post('/simpanpembina',[LoginController::class,'simpanpembina'])->name('simpanpembina');
 route::get('/daftarpembina',[LoginController::class,'daftarpembina'])->name('daftarpembina');
 route::delete('/daftarpembina/{id}',[LoginController::class,'destroy'])->name('destroy');
+Route::get('/jurnalexport', [JurnalEkstraController::class,'export'])->name('jurnalexport');
+Route::get('/anggotaekstraexport', [AnggotaEkstraController::class,'export'])->name('anggotaekstraexport');
+Route::get('/pendaftarexport', [PendaftarController::class,'export'])->name('pendaftarexport');
 });
 
 Route::group(['middleware' => ['auth:user','ceklevel:siswa']], function () {
     Route::resource('/siswa/pendaftaran', PendaftarController::class);
+    Route::resource('/siswa', WelcomeController::class);
 });
 
 Route::group(['middleware' => ['auth:kesiswaan,pembina','ceklevel:kesiswaan,pembina']], function () {
+    Route::resource('/', WelcomeController::class);
     Route::resource('/anggotaekstra', AnggotaEkstraController::class);
     Route::resource('/jurnal', JurnalEkstraController::class);
-    Route::get('/jurnalexport', [JurnalEkstraController::class,'export'])->name('jurnalexport');
     Route::resource('/pendaftaran', PendaftarController::class);
     Route::post('/pendaftaran/konfirmasi/{id}', [PendaftarController::class,'konfirmasi']);
     Route::post('/pendaftaran/konfirmasi2/{id}', [PendaftarController::class,'konfirmasi2']);

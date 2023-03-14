@@ -12,9 +12,15 @@
    <script src="{{ url('bt') }}/vendor/datatables/jquery.dataTables.min.js"></script>
    <script src="{{ url('bt') }}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
+   <script src="{{ asset('datatables/jquery-3.6.1,min.js') }}"></script>
+   <script src="{{ asset('datatables/datatables-demo.js' ) }}"></script>
+   <script src="{{ asset('datatables/jquery-3.6.1.min.js') }}"></script>  
+   <script src="{{ asset('datatables/jquery.dataTables.min.js') }}"></script>
+   <script src="{{ asset('datatables/dataTables.bootstrap4.min.js') }}"></script>
+
    <!-- Page level custom scripts -->
    <script src="{{ url('bt') }}/js/demo/datatables-demo.js"></script>
-
+ 
    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
    
    <script>

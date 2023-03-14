@@ -8,21 +8,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html lang="en">
 <head>
     <title>{{ config('app.name') }} - {{ $title }}</title>
-
 </head>
-
-      
-
-            <!-- /.content-header --> 
-
             <!-- Main content -->
+            <a href="/jurnal">
+                    <i class="fa fa-arrow-left mb-3"aria-hidden="true"> Kembali</i>
+                </a>
+            <div class="card">
+            <div class="card-header"><h3>{{ $title }}</h3></div>
             <div class="content">
             <div class="container-fluid content">
-                <a href="/jurnal">
-                    <i class="fa fa-arrow-left"aria-hidden="true"> Kembali</i>
-                </a>
                         <div class="container  col-md-">
-                        <div class="card-header"><h3>{{ $title }}</h3></div>
                         <div class="card-body col-lg-8">
                             <form  class="form-valide" action="/jurnal" method="post">
                                 @csrf
@@ -38,8 +33,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
 
                                 <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Di Isi Oleh</label>
+                                    <input type="text" class="form-control" value="{{ Auth::guard('pembina')->user()->nama }}" name="pembina" id="exampleFormControlInput1" placeholder="Pengisi" required readonly>
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Tanggal</label>
-                                    <input type="date" class="form-control" name="tanggal" id="exampleFormControlInput1" placeholder="Judul ..." required>
+                                    <input type="date" class="form-control" value="{{ date('Y-m-d') }}" name="tanggal" id="exampleFormControlInput1" required readonly>
                                 </div>
 
                                 <div class="mb-3">
@@ -53,6 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                 </div> 
             </div>
+        </div>
 </div>
 </body>
 </html>

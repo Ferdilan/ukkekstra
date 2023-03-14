@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('content')
+            <a href="/anggotaekstra">
+            <i class="fa fa-arrow-left mb-3 "aria-hidden="true"> Kembali</i>
+            </a>
+<div class="card">
 <div class="content">
             <div class="container-fluid content">
-            <a href="/anggotaekstra">
-            <i class="fa fa-arrow-left"aria-hidden="true"> Kembali</i>
-            </a>
                         <div class="container  col-md-">
                         <div class="card-header"><h3>{{ $title }}</h3></div>
                         <div class="card-body col-lg-8">
@@ -53,5 +54,6 @@
                     </div>
                 </div>
             </div>
+</div>
 </div>
 @endsection

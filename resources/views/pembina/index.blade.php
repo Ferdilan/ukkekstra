@@ -1,18 +1,19 @@
 @extends('layouts.app')
 @section('content')
-
+<div class="card">
 <div class="card-header"><h2>Daftar Pembina<h2></div>
                         <div class="card-header">
                         <a class="btn btn-primary" href="/tambahpembina" role="button">Tambah Pembina</a>
                             </div>
-                            <div class="card-body p-0 table-responsive">
-                            <table class="table table-striped table-hover mb-0">
+                            <div class="card-body p-0 table-responsive mt-3">
+                            <table class="table table-striped table-hover mb-0" id="dataTable">
                                 <thead>
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nama</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Password</th> 
+                                            <th scope="col">Aksi</th> 
                                         </tr>
                                 </thead>
                                 <tbody>
@@ -35,5 +36,6 @@
                             </table>
                             </div>
                             </div>
+</div>
 </div>
 @endsection

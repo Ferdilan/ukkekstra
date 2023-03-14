@@ -10,29 +10,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>{{ config('app.name') }} - {{ $title }}</title>
 
 </head>
-
-      
-
-            <!-- /.content-header -->
-
             <!-- Main content -->
+            <a href="/anggotaekstra">
+            <i class="fa fa-arrow-left mb-3"aria-hidden="true"> Kembali</i>
+            </a>
+            <div class="card">
+            <div class="card-header"><h3>{{ $title }}</h3></div>
             <div class="content">
             <div class="container-fluid content">
-            <a href="/anggotaekstra">
-            <i class="fa fa-arrow-left"aria-hidden="true"> Kembali</i>
-            </a>
                         <div class="container  col-md-">
-                        <div class="card-header"><h3>{{ $title }}</h3></div>
                         <div class="card-body col-lg-8">
                             <form  class="form-valide" action="/anggotaekstra" method="post">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" name="nama" id="exampleFormControlInput1" placeholder="nama" required>
+                                    <input type="text" class="form-control" name="nama" id="exampleFormControlInput1" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Kelas</label>
-                                    <input type="text" class="form-control" name="kelas" id="exampleFormControlInput1" placeholder="kelas" required>
+                                    <input type="text" class="form-control" name="kelas" id="exampleFormControlInput1" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Ekstra Yang Diikuti</label>
@@ -62,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </select>
                                 </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Tambah</button>
+                                <button type="submit" class="btn btn-primary mb-5">Tambah</button>
                             </form>
                             </div>
                         </div><!-- /.container-fluid -->
@@ -70,6 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                 </div>
             </div>
+        </div>
 </body>
 </html>
 @endsection

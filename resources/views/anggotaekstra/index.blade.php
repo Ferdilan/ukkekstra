@@ -1,14 +1,16 @@
 @extends('layouts.app')
 @section('content')
 
+<div class="card">
 <div class="card-header"><h2>{{ $title }}<h2></div>
                         @if(auth()->user()->level =="kesiswaan")                        
                         <div class="card-header">
-                        <a class="btn btn-primary" href="/anggotaekstra/create" role="button">Tambah Anggota Ekstra</a>
-                            </div>
+                            <a class="btn btn-primary" href="/anggotaekstra/create" role="button">Tambah Anggota Ekstra</a>
+                            <a class="btn btn-primary" href="{{ route('anggotaekstraexport') }}" role="button">Export Anggota Ekstra</a>
+                        </div>
                             @endif
-                            <div class="card-body p-0 table-responsive">
-                            <table class="table table-striped table-hover mb-0">
+                            <div class="card-body p-0 table-responsive mt-3"> 
+                        <table class="table table-striped table-hover" id="dataTable">
                                 <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -17,6 +19,9 @@
                                             <th scope="col">Ekstra</th>
                                             <th scope="col">Ekstra</th>
                                             <th scope="col">Ekstra</th>
+                                            @if(auth()->user()->level =="kesiswaan")  
+                                            <th scope="col">Aksi</th>
+                                            @endif
                                         </tr>
                                 </thead>
                                 <tbody>
@@ -44,5 +49,6 @@
                             </table>
                             </div>
                             </div>
+</div>
 </div>
 @endsection

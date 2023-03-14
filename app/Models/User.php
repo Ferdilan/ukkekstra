@@ -22,6 +22,7 @@ class User extends Authenticatable
         'level',
         'email',
         'password',
+        'ekstra_registered'
     ];
 
     /**
@@ -42,4 +43,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function hasRole(string $roleName): bool
+    {
+        return $this->hasRoleNamed($roleName);
+    }
 }

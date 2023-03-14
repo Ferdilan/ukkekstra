@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\anggotaekstra;
 use App\Models\daftarekstra;
 use App\Models\User;
+use App\Exports\AnggotaEkstraExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class AnggotaEkstraController extends Controller
 {
@@ -121,4 +124,12 @@ class AnggotaEkstraController extends Controller
         // kembalikan ke halaman catatankerja
         return redirect('/anggotaekstra');
     }
+
+    public function export()
+    {
+        return Excel::download(new AnggotaEkstraExport, 'anggotaekstra.xlsx');
+        return redirect('/anggotaekstra');
+    }
+
 }
+ 

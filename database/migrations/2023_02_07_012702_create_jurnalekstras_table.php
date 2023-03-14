@@ -16,6 +16,7 @@ class CreateJurnalekstrasTable extends Migration
         Schema::create('jurnalekstras', function (Blueprint $table) {
             $table->id();
             $table->string('ekstra');
+            $table->string('pembina');
             $table->date('tanggal');
             $table->string('kegiatan');
             $table->timestamps();

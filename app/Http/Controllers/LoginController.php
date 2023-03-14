@@ -18,7 +18,7 @@ class LoginController extends Controller
  
     public function postlogin(Request $request){
         if(Auth::guard('user')->attempt(['email'=> $request->email, 'password' => $request->password])) {
-            return redirect('/');    
+            return redirect('/siswa');    
         }elseif(Auth::guard('pembina')->attempt(['email'=> $request->email, 'password' => $request->password])){
             return redirect('/jurnal');   
         }elseif(Auth::guard('kesiswaan')->attempt(['email'=> $request->email, 'password' => $request->password])){

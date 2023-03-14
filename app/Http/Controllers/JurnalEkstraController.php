@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\jurnalekstra;
 use App\Models\anggotaekstra;
 use App\Models\daftarekstra;
+use App\Models\Pembina;
 use App\Models\user;
 use App\Exports\JurnalExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -20,12 +21,12 @@ class JurnalEkstraController extends Controller
      */
     public function index(Request $request)
     {
-
         return view('jurnal.index', [
             'title' => "Jurnal Ekstra",
             'jurnal' => jurnalekstra::all(),
             'anggota' => anggotaekstra::all(),
             'ekstra' => daftarekstra::all(),
+            'pembina' => Pembina::all()
         ]);
     }
 
@@ -40,7 +41,8 @@ class JurnalEkstraController extends Controller
             'title' => "Tambah Jurnal Ekstra",
             'users' => User::all(),
             'anggota' => anggotaekstra::all(),
-            'ekstra' => daftarekstra::all()
+            'ekstra' => daftarekstra::all(),
+            'pembina' => Pembina::all()
         ]); 
     }
 
@@ -54,10 +56,11 @@ class JurnalEkstraController extends Controller
     {
         $jurnalekstra = $request->validate([
             'ekstra' => 'required',
+            'pembina' => 'required',
             'tanggal' => 'required',
             'kegiatan' => 'required'
         ]);
-        
+
         jurnalekstra::create($jurnalekstra);
         return redirect('jurnal');
     }

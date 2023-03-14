@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this page -->
     <link href="{{ url('bt') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{ asset('datatables/dataTables.bootstrap4.min.css') }}">
 
     <style>
     #loading-wrapper {

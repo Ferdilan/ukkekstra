@@ -3,11 +3,11 @@
 
 @include('layouts.head')
 
-<body class="bg-gradient-dark">
+<body class="bg-gradient-primary">
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-12 col-md-9">
+            <div class="col-xl-6 col-lg-6 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -36,10 +36,10 @@
                                                 <label class="custom-control-label" for="customCheck">Tampilkan Password</label>
                                             </div>
                                         </div>
-                                        <button class="btn btn-dark btn-user btn-block" type="submit"
+                                        <button class="btn btn-primary btn-user btn-block" type="submit"
                                             name="login">Login</button>
                                         <hr>
-                                        <p class="mb-0">Belum Punya Akun? 
+                                        <p class="mb-0">Siswa Pendaftar Ekstrakulikuler / Belum Punya Akun?
                                          <a href="{{route ('registrasi')}}"class="text-center">Silahkan Registrasi</a>
                                         </p>
                                     </form>
