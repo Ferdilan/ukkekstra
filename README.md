@@ -1,6 +1,6 @@
 Script ini ditulis dengan berdarah-darah dan penuh sumpah serapah
 
-Projek ini sebagai tugas akhir yang tidak membantu orang lain namun setidaknya dapat membantu saya untuk lulus
+Projek ini sebagai tugas akhir yang tidak membawa perubahan untuk orang lain namun setidaknya dapat membantu saya untuk lulus
 
 Tugas akhir yang baik adalah tugas akhir yang selesai 
 
